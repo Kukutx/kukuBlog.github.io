@@ -8,7 +8,7 @@
     <link href="/kukuBlog.github.io/2022/03/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/"/>
     <url>/kukuBlog.github.io/2022/03/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/</url>
     
-    <content type="html"><![CDATA[<p>这是一篇测试文章</p><img src="/kukuBlog.github.io/2022/03/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png" class="" title="图片引用方法一"><!-- ![图片引用方法二](test.png) --><!-- ![图片引用方法三](/image/test.png)  -->]]></content>
+    <content type="html"><![CDATA[<p>这是一篇测试文章</p><p><span  style="color: #519D9E; ">#519D9E颜色演示</span></p><p><span  style="font-size:0.7em;">0.7em 文字大小演示</span></p><p style="text-align:center">内容居中演示</p> # 可以修改 text-align 参数来设置文字位置。<p><a href="#demo">点击到达跳转位置演示</a> # 在需要跳转的地方添加此代码。<br><a id="demo">跳转位置演示（跳转位置设置点）</a> # 在跳转位置添加次代码。</p><p style="text-align:center;color:#8EC0E4;font-size:1.5em;font-weight: bold;">综合演示<br>优雅使用 Fluid 写文章</p><iframe src="https://hexo.fluid-dev.com/" width="100%" height="500" name="topFrame" scrolling="yes"  noresize="noresize" frameborder="0" id="topFrame"></iframe><img src="/kukuBlog.github.io/2022/03/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/test.png" class="" title="图片引用方法一"><!-- ![图片引用方法二](test.png) --><!-- ![图片引用方法三](/image/test.png)  -->]]></content>
     
     
     <categories>

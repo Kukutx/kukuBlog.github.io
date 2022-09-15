@@ -1,0 +1,764 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,it" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/kukuBlog.github.io/img/logo.png">
+  <link rel="icon" href="/kukuBlog.github.io/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="kukutx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="《编程语言简介》 首先什么是编程语言？编程语言(programming language),它是能够实现人与机器之间的交流和沟通的桥梁，并对其发出指令与操控机器。在我看来，编程语言他本质上就是一串字符串，利用编译器以及其定义好的语言形式规则，写出一套符合语法规则可进行转换翻译成计算机程序的形式语言。输入字符串文本到编译器(在这里被称为源代码)，并且输出结果为目标程序或目标代码，这里可以简单的理解成">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编程语言简介">
+<meta property="og:url" content="https://kukutx.github.io/kukuBlog.github.io/it/undefined/2022/09/14/%E3%80%8A%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B%E3%80%8B/index.html">
+<meta property="og:site_name" content="kukutxBlog">
+<meta property="og:description" content="《编程语言简介》 首先什么是编程语言？编程语言(programming language),它是能够实现人与机器之间的交流和沟通的桥梁，并对其发出指令与操控机器。在我看来，编程语言他本质上就是一串字符串，利用编译器以及其定义好的语言形式规则，写出一套符合语法规则可进行转换翻译成计算机程序的形式语言。输入字符串文本到编译器(在这里被称为源代码)，并且输出结果为目标程序或目标代码，这里可以简单的理解成">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/5559988cb6df40f582688569ce339534.png#pic_center">
+<meta property="article:published_time" content="2022-09-13T22:13:39.000Z">
+<meta property="article:modified_time" content="2022-09-15T01:13:11.603Z">
+<meta property="article:author" content="kukutx">
+<meta property="article:tag" content="原创">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/5559988cb6df40f582688569ce339534.png#pic_center">
+  
+  
+  <title>编程语言简介 - kukutxBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/kukuBlog.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/kukuBlog.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/kukuBlog.github.io/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/kukuBlog.github.io/css/scrollbar.css">
+<link rel="stylesheet" href="/kukuBlog.github.io/css/indeximg-hover.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"kukutx.github.io","root":"/kukuBlog.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/kukuBlog.github.io/local-search.xml"};
+  </script>
+  <script  src="/kukuBlog.github.io/js/utils.js" ></script>
+  <script  src="/kukuBlog.github.io/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/kukuBlog.github.io/">
+      <strong>kukutx99</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/kukuBlog.github.io/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="编程语言简介"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-14 00:13" pubdate>
+          14 settembre 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">编程语言简介</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="《编程语言简介》"><a href="#《编程语言简介》" class="headerlink" title="《编程语言简介》"></a>《编程语言简介》</h1><p><img src="https://img-blog.csdnimg.cn/5559988cb6df40f582688569ce339534.png#pic_center" srcset="/kukuBlog.github.io/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<h2 id="首先什么是编程语言？"><a href="#首先什么是编程语言？" class="headerlink" title="首先什么是编程语言？"></a>首先什么是编程语言？</h2><p>编程语言(programming language),它是能够实现人与机器之间的交流和沟通的桥梁，并对其发出指令与操控机器。<br>在我看来，编程语言他本质上就是一串字符串，利用编译器以及其定义好的语言形式规则，写出一套符合语法规则可进行转换翻译成计算机程序的形式语言。<br>输入字符串文本到编译器(在这里被称为源代码)，并且输出结果为目标程序或目标代码，这里可以简单的理解成一种计算机和人都能识别的语言，编译器目的就是将我们的写出来的字符串转换成另一种形式的字符串，一种能让电脑读懂的字符串，也就是指令，或者被称为二进制码。<br>编程语言为了定义计算机指令执行流程，通常都会包含一套整词汇和语法规范。这些规范包括数据类型和数据结构、指令类型和条件控制、调用机制，内置函数以及一些不成文的规定比如变量命名规则，文件命名规则等等。<br>大多数编程语言都能够组合出复杂的数据结构(如链表、堆栈、树、文件等)。面向对象的编程语言还允许程序员定义新的数据结构(如<strong>“对象”</strong>)。</p>
+<h2 id="编程语言的基本组成："><a href="#编程语言的基本组成：" class="headerlink" title="编程语言的基本组成："></a>编程语言的基本组成：</h2><p>数据成分： 用于描述程序所涉及的数据</p>
+<ul>
+<li>程序名字说明  (如变量名，对象名等等)</li>
+<li>数据类型  (对程序实现时用到的各种数据类型的一种声明，可以是整型、浮点型、用户自定义类型等。)</li>
+</ul>
+<p>运算成分： 用以描述程序中所包含的运算</p>
+<ul>
+<li>初始化</li>
+<li>运算对象</li>
+</ul>
+<p>控制成分：用以描述程序中所包含的控制</p>
+<ul>
+<li>顺序控制结构</li>
+<li>循环控制结构</li>
+<li>分支控制结构</li>
+</ul>
+<p>传输成分：用以表达程序的输入和输出</p>
+<ul>
+<li>传输成分包括基本的输入和输出。</li>
+</ul>
+<h2 id="计算机编程语言的分类"><a href="#计算机编程语言的分类" class="headerlink" title="计算机编程语言的分类"></a>计算机编程语言的分类</h2><p><strong>计算机编程语言有多种分类，但大部分编程语言都是算法描述型语言，比如C++&#x2F;JAVA&#x2F;Python等，还有一部分是数据描述型语言，比如HTML&#x2F;CSS等计算机语言(广义上来说这类不能完全算编程语言的范围)，但是编程技术主要包括机器语言，汇编语言以及高级语言，具体内容如下：</strong> </p>
+<p><strong>机器码(machine code):</strong>  是电脑的CPU可直接解读运行的机器指令(计算机只认识0和1)。通常意义上来理解的话，机器码就是计算机可以直接执行，并且执行速度最快的代码，但是非常晦涩难懂，也比较难编写。这种语言主要是利用二进制编码进行指令的发送，能够被计算机快速地识别，其灵活性相对较高，且执行速度较为可观，机器语言与汇编语言之间的相似性较高，但由于具有局限性，不管是学习还是使用都特别麻烦。特点：可读性、可移植性差，编程繁杂。<br>直接执行，速度快，资源占用少。</p>
+<p>**汇编语言(Assembly Language)**：汇编语言又名低级语言或者说面向机器的程序设计语言，它是将机器语言的二进制代码指令用简单符号(助记符)表示的一种语言，他是最贴近机器码的语言，他的起因是人类为了方便记忆和识别机器码(因为太难记了)，而创造的助记符，而现在也是为了从高级语言转换到机器码以及代码优化方案的不可忽略的重要过程，汇编语言是二进制指令的文本形式，它与指令是一一对应的关系。比如，加法指令<code>00000011</code>写成汇编语言就是 ADD。只要还原成二进制，汇编语言就可以被 CPU 直接执行(将汇编语言转换为二进制的工具叫汇编器)，所以它是最底层的低级语言。它能够直接访问计算机硬件，所以执行效率极高，占用资源极少，一般用于嵌入式设备，驱动程序，实时应用，核心算法，逆向工程等。</p>
+<p>**高级语言(High-level programming language):**是一种独立于机器，面向过程或面向对象的语言。高级语言是参照数学和语言而设计的近似于自然语言的语言，所谓的高级语言，其实是统称多种现代化的编程语言，其可以对多条指令进行整合，将其变为单条指令完成输送，其在操作细节指令以及中间过程等方面都得到了适当的简化，所以，整个程序更为简便，具有较强的操作性，而这种编码方式的简化，使得计算机编程对于相关工作人员的专业水平要求不断放宽。</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">所谓的高级语言其实是对低级语言的多重封装<span class="hljs-comment">(如果拿C语言作为案例的话，而其他语言诸如虚拟机语言或者解释型语言，大致原理也是相似的)</span>，而汇编语言是机器语言的助记符而他们是一一对应的关系，他不是封装而是为了方便记忆<br></code></pre></td></tr></table></figure>
+
+<p><strong>高级语言的按转换方式可分为三类：编译型语言  解释型语言 脚本语言</strong></p>
+<p><strong>1、编译型语言：</strong><br>编译性语言写的程序在被执行之前，需要一个专门的编译过程，将程序源文件代码编译成机器语言文件(二进制文件)，如exe文件等等，全程只需要编译一次就不需要再重新翻译了，可直接使用编译的结果就行了(exe文件)，因为翻译只做了一次，运行时不需要翻译，所以编译型语言的程序执行效率是其他类型里最高。</p>
+<p><strong>2、</strong> <strong>解释型语言：</strong> </p>
+<p>解释性语言的程序不需要编译，在运行程序的时候才翻译，每个语句都是执行的时候才翻译。这样解释性语言每执行一次就需要逐行翻译一次，效率比较低。<br>现代解释性语言通常把源程序编译成中间代码(比如字节码)，然后用解释器或者虚拟机把中间代码一条条翻译成目标机器代码，然后一条条执行(这里可以参考AOT，JIT等编译模式)。</p>
+<p><strong>3、脚本语言：</strong><br>脚本语言是一种解释性的语言，脚本语言是为了缩短传统的编写-编译-链接-运行（edit-compile-link-run）过程而创建的计算机编程语言。脚本语言一般都有相应的脚本引擎来解释执行。 他们一般需要解释器才能运行。一个脚本通常是解释运行而非编译。脚本语言通常都有简单、易学、易用的特性，目的就是希望能让程序员快速完成程序的编写工作。而宏语言则可视为脚本语言的分支，两者也有实质上的相同之处。脚本语言一般都是以文本形式存在,类似于一种命令。<br>tips:这里补充一点，脚本语言可以是解释型语言，但是解释型语言不一定是脚本语言。</p>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs delphi">解释性语言： Java，JavaScript，Perl，Python，Ruby，MATLAB，R 等。<br>编译性语言： C/C++、<span class="hljs-keyword">Pascal</span>/<span class="hljs-keyword">Object</span> <span class="hljs-keyword">Pascal</span>（Delphi)<br>脚本语言：   Python、JavaScript，ASP，PHP， Perl 等<br></code></pre></td></tr></table></figure>
+
+
+
+<p>**字节码(byte code)**：字节码或者说中间表达式,是一种包含执行程序、由一序列 OP代码(操作码)&#x2F;数据对 组成的二进制文件。字节码是一种中间码，它比机器码更抽象（主要是为了方便跨平台上的转换翻译），需要直译器转译后才能成为机器码的中间代码。通常情况下它是已经经过编译，但与特定机器码无关。字节码通常不像源码一样可以让人阅读，而是编码后的数值常量、引用、指令等构成的序列。字节码主要为了实现特定软件运行和软件环境、与硬件环境无关。字节码的实现方式是通过编译器和虚拟机器。编译器将源码编译成字节码，特定平台上的虚拟机器将字节码转译为可以直接执行的指令,它本身也算是编程语言。</p>
+<p><strong>补充，其他计算机语言：</strong></p>
+<p>当然讲了这么多，其实在计算机语言里除了正规的编程语言还有其他类似编程语言的玩意HTML&#x2F;CSS&#x2F;XML&#x2F;JSON等等，这类语言虽然不是编程语言但是与其息息相关。</p>
+<h2 id="按照常见的编程语言可分为两类："><a href="#按照常见的编程语言可分为两类：" class="headerlink" title="按照常见的编程语言可分为两类："></a>按照常见的编程语言可分为两类：</h2><p><strong>1.面向过程语言(procedure-oriented language)：</strong><br>面向过程语言(简写：POP)：是以过程或函数为基础的，一种以过程为中心的编程思想。 这些都是以什么正在发生为主要目标进行编程，这种语言对底层硬件，内存等操作比较方便，但是写代码和调试维护等会很麻烦。例如：c语言 ，也是典型的函数式编程了，一切为函数，一切为过程。<br><strong>2.面向对象语言(Object-Oriented Language)：</strong><br>面向对象语言(简写：OOP)：是一类以对象作为基本程序结构单位的程序设计语言，指用于描述的设计是以对象为核心，而对象是程序运行时刻的基本成分。语言中提供了类、继承等成分。有识认性、多态性、类别性和继承性四个主要特点。<br>面向对象语言的发展有两个方向：一种是纯面向对象语言，如Smalltalk、EIFFEL等；另一种是混合型面向对象语言，即在过程式语言及其它语言中加入类、继承等成分，如C++、Objective-C等。</p>
+<h2 id="编程范型"><a href="#编程范型" class="headerlink" title="编程范型"></a>编程范型</h2><p>Programming paradigm(编程范式) 是指某种编程语言典型的编程风格或编程方式。 编程范式是编程语言的一种分类方式，它是指编程语言被设计的一种编程风格。</p>
+<p><strong>编程范型可分为：</strong><br><strong>1.命令式语言：</strong><br>命令式程序设计语言是基于动作的语言，以冯诺依曼计算机体系结构为背景。机器语言及汇编语言是最早的命令式语言。在这种语言中，计算机被看做是动作的序列，程序就是用语言提供的操作命令书写的一个操作序列。用命令式程序设计语言编写程序，就是描述解题过程中每一步的过程，程序的运行过程就是问题的求解过程，因此也称为<strong>过程式语言</strong>。Fortran、ALGOL、COBOL、C、Ada、Pascal等都是命令式程序设计语言。<br><strong>2.函数式语言：</strong><br>函数式编程是种编程典范，它将电脑运算视为函数的计算。函数编程语言最重要的基础是 λ 演算（lambda calculus）。而且λ演算的函数可以接受函数当作输入（参数）和输出（返回值）。和指令式编程相比，函数式编程强调函数的计算比指令的执行重要。和过程化编程相比，函数式编程里，函数的计算可随时调用。这种语言的语义基础是基于数学函数概念的值映射的λ算子可计算模型。这种语言非常适合于进行人工智能等工作的计算。典型的函数式语言如 Lisp、Haskell、ML、Scheme 、F#等。<br><strong>3.逻辑式语言：</strong><br>这种语言的语义基础是基于一组已知规则的形式逻辑系统。这种语言主要用在专家系统的实现中。最著名的逻辑式语言是 Prolog。<br><strong>4.面向对象语言：</strong><br>现代语言中的大多数都提供面向对象的支持，但有些语言是直接建立在面向对象基本模型上的，语言的语法形式的语义就是基本对象操作。主要的纯面向对象语言是 Smalltalk。</p>
+<p><strong>4.多范式语言：</strong><br>它是支持多种具有特定机制的范式的语言。也是目前比较主流的编程范式，例如JavaScript,Java,C#,C++等，意思是一种编程语言不限于一种编程风格，它可以拥有多个范式</p>
+<p><strong>结语：</strong><br>貌似也没啥想说了的</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/kukuBlog.github.io/categories/%E5%85%B6%E4%BB%96/" class="category-chain-item">其他</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/kukuBlog.github.io/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>编程语言简介</div>
+      <div>https://kukutx.github.io/kukuBlog.github.io/undefined/2022/09/14/%E3%80%8A%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%AE%80%E4%BB%8B%E3%80%8B/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>kukutx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>14 settembre 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/kukuBlog.github.io/undefined/2022/09/15/%E3%80%8AResistor%E3%80%8B/" title="Resistor">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Resistor</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/kukuBlog.github.io/undefined/2022/03/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="测试文章">
+                        <span class="hidden-mobile">测试文章</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Kukutx/commit-utterances');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/kukuBlog.github.io/js/events.js" ></script>
+<script  src="/kukuBlog.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="/kukuBlog.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/kukuBlog.github.io/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/kukuBlog.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

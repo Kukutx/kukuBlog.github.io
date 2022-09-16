@@ -19,10 +19,10 @@
     <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://kukutx.github.io/kukuBlog.github.io/undefined/2022/03/17/hello-world/index.html">
+<meta property="og:url" content="https://kukutx.github.io/kukuBlog.github.io/en/2022/03/17/hello-world/index.html">
 <meta property="og:site_name" content="kukutxBlog">
 <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-03-16T23:00:44.181Z">
 <meta property="article:modified_time" content="2022-09-15T01:11:28.969Z">
 <meta property="article:author" content="kukutx">
@@ -110,7 +110,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/kukuBlog.github.io/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                Home
 
               <!--以上的部分是一级导航的部分-->
               <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
@@ -129,7 +129,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/kukuBlog.github.io/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                Archives
 
               <!--以上的部分是一级导航的部分-->
               <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
@@ -145,18 +145,39 @@
           
           
           
-            <li class="nav-item">
-              <a class="nav-link" href="/kukuBlog.github.io/categories/">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-category-fill"></i>
-                分类
-
-              <!--以上的部分是一级导航的部分-->
-              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
-              
-
-              <!-- 这里未来实现双语言切换功能 -->
-
+                Categories
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/categories/">
+                    <i class="icofont-abc"></i>
+                    全部
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/categories/%E7%94%9F%E6%B4%BB/">
+                    <i class="icofont-love"></i>
+                    生活
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                    <i class="icofont-notebook"></i>
+                    🖊笔记
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -167,7 +188,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/kukuBlog.github.io/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                Tags
 
               <!--以上的部分是一级导航的部分-->
               <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
@@ -186,7 +207,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/kukuBlog.github.io/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                About
 
               <!--以上的部分是一级导航的部分-->
               <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
@@ -205,7 +226,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/kukuBlog.github.io/links/">
                 <i class="iconfont icon-link-fill"></i>
-                友链
+                Links
 
               <!--以上的部分是一级导航的部分-->
               <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
@@ -221,18 +242,39 @@
           
           
           
-            <li class="nav-item">
-              <a class="nav-link" href="/kukuBlog.github.io/">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="iconfont icon-pen"></i>
                 language
-
-              <!--以上的部分是一级导航的部分-->
-              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
-              
-
-              <!-- 这里未来实现双语言切换功能 -->
-
               </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/zh-CN/">
+                    <i class="icofont-notebook"></i>
+                    CN
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/it/">
+                    <i class="icofont-notebook"></i>
+                    IT
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/en/">
+                    <i class="icofont-notebook"></i>
+                    EN
+                  </a>
+                
+              </div>
             </li>
           
         
@@ -276,7 +318,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-03-17 00:00" pubdate>
-          2022年3月17日 凌晨
+          March 17, 2022 am
         </time>
       </span>
     
@@ -287,7 +329,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          367 字
+          367 words
         
       </span>
     
@@ -298,7 +340,7 @@
         
         
         
-          4 分钟
+          4 mins
         
       </span>
     
@@ -370,30 +412,30 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Hello World</div>
-      <div>https://kukutx.github.io/kukuBlog.github.io/undefined/2022/03/17/hello-world/</div>
+      <div>https://kukutx.github.io/kukuBlog.github.io/en/2022/03/17/hello-world/</div>
     </div>
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
+          <div>Author</div>
           <div>kukutx</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年3月17日</div>
+          <div>Posted on</div>
+          <div>March 17, 2022</div>
         </div>
       
       
       <div class="license-meta-item">
-        <div>许可协议</div>
+        <div>Licensed under</div>
         <div>
           
             
             
               <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                 <i class="iconfont icon-by"></i>
               </span>
               </a>
@@ -415,7 +457,7 @@
                       <a href="/kukuBlog.github.io/zh-CN/2022/03/17/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0/" title="测试文章">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">测试文章</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -469,7 +511,7 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -523,7 +565,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -531,7 +573,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -548,7 +590,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
     </div>
   
   
@@ -750,7 +792,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

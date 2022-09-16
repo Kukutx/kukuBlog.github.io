@@ -456,6 +456,27 @@
 
 
 
+
+
+
+<!--谷歌自动翻译，把button放在右下角-->
+<div id="google_translate_element" style="position:absolute;bottom:10px;right:10px;z-index:2000;opacity:0.7"></div>
+<script>
+function googleTranslateElementInit() {
+
+	new google.translate.TranslateElement(
+		{
+            //pageLanguage: 'en',
+			layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+		}, 
+		'google_translate_element'
+	);
+
+}
+</script>
+<!--谷歌被墙，原来是translate.google.com，现在用cn-->
+<script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
               </div>
             </div>
           </div>

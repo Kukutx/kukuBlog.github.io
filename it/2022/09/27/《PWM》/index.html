@@ -1,0 +1,986 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN,en,it" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/kukuBlog.github.io/img/logo.png">
+  <link rel="icon" href="/kukuBlog.github.io/img/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="kukutx">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PWM什么是PWM脉冲宽度调制(PWM)，是英文“Pulse Width Modulation”的缩写，是利用微处理器的数字输出来对模拟电路进行控制的一种非常有效的技术，广泛应用在从测量、通信到功率控制与变换的许多领域中。  pwm的频率：  是指1秒钟内信号从高电平到低电平再回到高电平的次数(一个周期),也就是说一秒钟PWM有多少个周期； 单位：Hz ； 表示方式：50Hz 100Hz；  pw">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PWM">
+<meta property="og:url" content="https://kukutx.github.io/kukuBlog.github.io/it/2022/09/27/%E3%80%8APWM%E3%80%8B/index.html">
+<meta property="og:site_name" content="kukutxBlog">
+<meta property="og:description" content="PWM什么是PWM脉冲宽度调制(PWM)，是英文“Pulse Width Modulation”的缩写，是利用微处理器的数字输出来对模拟电路进行控制的一种非常有效的技术，广泛应用在从测量、通信到功率控制与变换的许多领域中。  pwm的频率：  是指1秒钟内信号从高电平到低电平再回到高电平的次数(一个周期),也就是说一秒钟PWM有多少个周期； 单位：Hz ； 表示方式：50Hz 100Hz；  pw">
+<meta property="og:locale" content="it_IT">
+<meta property="og:image" content="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg">
+<meta property="og:image" content="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg">
+<meta property="og:image" content="https://upload.semidata.info/new.eefocus.com/article/image/2021/06/28/60d930097497e.png">
+<meta property="og:image" content="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg">
+<meta property="og:image" content="https://bkimg.cdn.bcebos.com/pic/77094b36acaf2edda89c1d14861001e9380193d9?x-bce-process=image/resize,m_lfit,w_536,limit_1/format,f_jpg">
+<meta property="article:published_time" content="2022-09-27T01:03:39.000Z">
+<meta property="article:modified_time" content="2022-09-27T01:04:06.761Z">
+<meta property="article:author" content="kukutx">
+<meta property="article:tag" content="原创">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg">
+  
+  
+  <title>PWM - kukutxBlog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/kukuBlog.github.io/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/kukuBlog.github.io/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/kukuBlog.github.io/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/kukuBlog.github.io/css/test/scrollbar.css">
+<link rel="stylesheet" href="/kukuBlog.github.io/css/test/indeximg-hover.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/shubiao.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/scroll.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/gradient.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"kukutx.github.io","root":"/kukuBlog.github.io/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/kukuBlog.github.io/local-search.xml"};
+  </script>
+  <script  src="/kukuBlog.github.io/js/utils.js" ></script>
+  <script  src="/kukuBlog.github.io/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/kukuBlog.github.io/">
+      <strong>kukutx99</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+
+              <!--以上的部分是一级导航的部分-->
+              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
+              
+
+              <!-- 这里未来实现双语言切换功能 -->
+              <!--谷歌自动翻译插件，把button放在右下角-->    <!-- 这里得实现控件大小自适应 -->
+              <div id="google_translate_element" style="position:absolute;bottom:18px;right:10px;z-index:2000;opacity:0.7"></div>
+              <script>
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                          //pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                  }, 
+                  'google_translate_element'
+                );
+                
+              }
+              </script>
+              <!--谷歌被墙，原来是translate.google.com，现在用cn-->
+              <script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+
+              <!--以上的部分是一级导航的部分-->
+              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
+              
+
+              <!-- 这里未来实现双语言切换功能 -->
+              <!--谷歌自动翻译插件，把button放在右下角-->    <!-- 这里得实现控件大小自适应 -->
+              <div id="google_translate_element" style="position:absolute;bottom:18px;right:10px;z-index:2000;opacity:0.7"></div>
+              <script>
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                          //pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                  }, 
+                  'google_translate_element'
+                );
+                
+              }
+              </script>
+              <!--谷歌被墙，原来是translate.google.com，现在用cn-->
+              <script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/categories/">
+                    <i class="icofont-abc"></i>
+                    全部
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/categories/%E7%94%9F%E6%B4%BB/">
+                    <i class="icofont-love"></i>
+                    生活
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/categories/%E7%AC%94%E8%AE%B0/">
+                    <i class="icofont-notebook"></i>
+                    🖊笔记
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+
+              <!--以上的部分是一级导航的部分-->
+              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
+              
+
+              <!-- 这里未来实现双语言切换功能 -->
+              <!--谷歌自动翻译插件，把button放在右下角-->    <!-- 这里得实现控件大小自适应 -->
+              <div id="google_translate_element" style="position:absolute;bottom:18px;right:10px;z-index:2000;opacity:0.7"></div>
+              <script>
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                          //pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                  }, 
+                  'google_translate_element'
+                );
+                
+              }
+              </script>
+              <!--谷歌被墙，原来是translate.google.com，现在用cn-->
+              <script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+
+              <!--以上的部分是一级导航的部分-->
+              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
+              
+
+              <!-- 这里未来实现双语言切换功能 -->
+              <!--谷歌自动翻译插件，把button放在右下角-->    <!-- 这里得实现控件大小自适应 -->
+              <div id="google_translate_element" style="position:absolute;bottom:18px;right:10px;z-index:2000;opacity:0.7"></div>
+              <script>
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                          //pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                  }, 
+                  'google_translate_element'
+                );
+                
+              }
+              </script>
+              <!--谷歌被墙，原来是translate.google.com，现在用cn-->
+              <script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/kukuBlog.github.io/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+
+              <!--以上的部分是一级导航的部分-->
+              <!--这里判断有没有二级菜单，有的话遍历出二级菜单（就是竖着的那部分）-->
+              
+
+              <!-- 这里未来实现双语言切换功能 -->
+              <!--谷歌自动翻译插件，把button放在右下角-->    <!-- 这里得实现控件大小自适应 -->
+              <div id="google_translate_element" style="position:absolute;bottom:18px;right:10px;z-index:2000;opacity:0.7"></div>
+              <script>
+              function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                  {
+                          //pageLanguage: 'en',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                  }, 
+                  'google_translate_element'
+                );
+                
+              }
+              </script>
+              <!--谷歌被墙，原来是translate.google.com，现在用cn-->
+              <script src="https://translate.google.cn/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
+                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="iconfont icon-pen"></i>
+                language
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/zh-CN/">
+                    <i class="icofont-notebook"></i>
+                    CN
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/it/">
+                    <i class="icofont-notebook"></i>
+                    IT
+                  </a>
+                
+                  
+                  
+                  
+                  <a class="dropdown-item" href="/kukuBlog.github.io/en/">
+                    <i class="icofont-notebook"></i>
+                    EN
+                  </a>
+                
+              </div>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/kukuBlog.github.io/img/default-2.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="PWM"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-27 03:03" pubdate>
+          27 settembre 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          21 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">PWM</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="PWM"><a href="#PWM" class="headerlink" title="PWM"></a>PWM</h1><h2 id="什么是PWM"><a href="#什么是PWM" class="headerlink" title="什么是PWM"></a>什么是PWM</h2><p>脉冲宽度调制(PWM)，是英文“Pulse Width Modulation”的缩写，是利用微处理器的数字输出来对模拟电路进行控制的一种非常有效的技术，广泛应用在从测量、通信到功率控制与变换的许多领域中。</p>
+<p><img src="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg" srcset="/kukuBlog.github.io/img/loading.gif" lazyload alt="img"></p>
+<p><strong>pwm的频率</strong>：</p>
+<ul>
+<li>是指1秒钟内信号从高电平到低电平再回到高电平的次数(一个周期),也就是说一秒钟PWM有多少个周期；</li>
+<li>单位：Hz ；</li>
+<li>表示方式：50Hz 100Hz；</li>
+</ul>
+<p><strong>pwm的周期：</strong></p>
+<ul>
+<li>T&#x3D;1&#x2F;f  （周期&#x3D;1&#x2F;频率）</li>
+<li>50Hz &#x3D; 20ms 一个周期 ；</li>
+<li>如果频率为50Hz ，也就是说一个周期是20ms 那么一秒钟就有 50次PWM周期。</li>
+</ul>
+<p><strong>占空比</strong>：</p>
+<ul>
+<li>是一个脉冲周期内，高电平的时间与整个周期时间的比例。</li>
+<li>单位： <strong>%</strong> (0%-100%)</li>
+<li>表示方式：20%</li>
+</ul>
+<p><strong>周期：</strong></p>
+<ul>
+<li>一个脉冲信号的时间，1s内测周期次数等于频率</li>
+</ul>
+<p><strong>脉宽时间：</strong> </p>
+<ul>
+<li>高电平时间，上图中方快形状就是脉宽时间</li>
+<li>比方说周期的时间是10ms，脉宽时间是8ms 那么低电平时间就是2ms 总的占空比 8&#x2F;8+2&#x3D; 80%，这就是占空比为80%的脉冲信号。</li>
+</ul>
+<p>而我们知道PWM就是脉冲宽度调制通过调节占空比，就可以调节脉冲宽度(脉宽时间) 而频率，就是单位时间内脉冲信号的次数，频率越大；</p>
+<p>以20Hz 占空比为80% 举例 就是1秒钟之内输出了20次脉冲信号 每次的高电平时间为40ms。</p>
+<p>图中，周期为T，T1为高电平时间，T2 为低电平时间，假设周期T为 1s 那么频率就是 1Hz 那么高电平时间0.5s ，低电平时间0.5s 总的占空比就是 0.5 &#x2F;1 &#x3D;50%。</p>
+<h2 id="PWM原理"><a href="#PWM原理" class="headerlink" title="PWM原理"></a>PWM原理</h2><p>以单片机为例，我们知道，单片机的IO口输出的是数字信号，IO口只能输出高电平和低电平，假设高电平为5V 低电平则为0V 那么我们要输出不同的模拟电压，就要用到PWM，通过改变IO口输出的方波的占空比从而获得使用数字信号模拟成的模拟电压信号。</p>
+<p>我们知道，电压是以一种连接1或断开0的重复脉冲序列被夹到模拟负载上去的（例如LED灯，直流电机等），连接即是直流供电输出，断开即是直流供电断开。通过对连接和断开时间的控制，理论上来讲，可以输出任意不大于最大电压值（即0~5V之间任意大小）的模拟电压。</p>
+<p>比方说 占空比为50% 那就是高电平时间一半，低电平时间一半，在一定的频率下，就可以得到模拟的2.5V输出电压 那么75%的占空比 得到的电压就是3.75V。</p>
+<p><img src="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg" srcset="/kukuBlog.github.io/img/loading.gif" lazyload alt="img"></p>
+<p>pwm的调节作用来源于对“占周期”的宽度控制，“占周期”变宽，输出的能量就会提高，通过阻容变换电路所得到的平均电压值也会上升，“占周期”变窄，输出的电压信号的电压平均值就会降低，通过阻容变换电路所得到的平均电压值也会下降。</p>
+<p>也就是，<strong>在一定的频率下，通过不同的占空比 即可得到不同的输出模拟电压。</strong>pwm就是通过这种原理实现D&#x2F;A转换的。</p>
+<p><strong>总结：PWM就是在合适的信号频率下，通过一个周期里改变占空比的方式来改变输出的有效电压。</strong></p>
+<p>PWM频率越大，相应越快，PWM输出呼吸灯，那么，PWM信号的实际作用是什么呢？我们以经常使用的呼吸灯举例：一般人眼睛对于80Hz 以上刷新频率则完全没有闪烁感。</p>
+<p>频率太小的话看起来就会闪烁，那么我们平时见到的LED灯，当它的频率大于50Hz的时候，人眼就会产生视觉暂留效果，基本就看不到闪烁了，而是一个常亮的LED灯，你在1秒内，高电平0.5秒，低电平0.5秒，(频率1Hz)如此反复，那么你看到的电灯就会闪烁，但是如果是10毫秒内，5毫秒打开，5毫秒关闭，(频率100Hz) 这时候灯光的亮灭速度赶不上开关速度(LED灯还没完全亮就又熄灭了)，由于视觉暂留作用，人眼不感觉电灯在闪烁，而是感觉灯的亮度少了，因为高电平时间(占空比)为50%，亮度也就为之前的50% ，<strong>频率很高时，看不到闪烁，占空比越大，LED越亮；频率很低时，可看到闪烁，占空比越大，LED越亮。</strong></p>
+<h1 id="PWM占空比"><a href="#PWM占空比" class="headerlink" title="PWM占空比"></a>PWM占空比</h1><h2 id="1-占空比什么意思"><a href="#1-占空比什么意思" class="headerlink" title="1.占空比什么意思"></a>1.占空比什么意思</h2><p>是指电路被接通的时间占整个电路工作周期的百分比。比如说，一个电路在它一个工作周期中有一半时间被接通了，那么它的占空比就是50%。构成矩形波的脉冲信号，其占空比可见一斑。如果加在该工作元件上的信号电压为5V，则实际的工作电压平均值或电压有效值就是2.5V。假设该元件为一个电子阀门，当电路全部接通时，阀门全开；当占空比为50%时，阀门状态为半开。同理，当占空比设置为20%时，阀门的开度显然应该为20%。这样,这个阀门就可以在0%(全闭)到100%（全开）的范围内任意调节。</p>
+<p><img src="https://upload.semidata.info/new.eefocus.com/article/image/2021/06/28/60d930097497e.png" srcset="/kukuBlog.github.io/img/loading.gif" lazyload alt="占空比什么意思"></p>
+<p><img src="https://mianbaoban-assets.oss-cn-shenzhen.aliyuncs.com/2021/2/NJZ3qi.jpeg" srcset="/kukuBlog.github.io/img/loading.gif" lazyload></p>
+<h2 id="2-占空比计算公式"><a href="#2-占空比计算公式" class="headerlink" title="2.占空比计算公式"></a>2.占空比计算公式</h2><p><strong>占空比</strong>是指高电平在一个周期之内所占的时间比率，方波的占空比为50％，占空比为0.5,说明正电平所占时间为0.5个周期。若信号的周期为T，每周期高电平时间为t1，低电平时间为t2，T&#x3D;t1+t2,则占空比D&#x3D;t1&#x2F;T。占空比(Duty Cycle)在电信领域中有如下含义：在一串理想的脉冲信号中（如方波），正脉冲的持续时间与脉冲总周期的比值。例如：脉冲宽度1μs，信号周期4μs的脉冲序列占空比为0.25。</p>
+<p>而脉宽就是时间，比如通电的时间高电平维持4秒</p>
+<h2 id="3-占空比和频率的关系"><a href="#3-占空比和频率的关系" class="headerlink" title="3.占空比和频率的关系"></a>3.占空比和频率的关系</h2><p>什么是频率？频率就是它在一秒内的变化次数，而频率的关键词就变化的次数</p>
+<p>如果频率指的是电机的话，一般所说的频率是指电机频率n&#x3D;60f&#x2F;pn是转速；f是频率；</p>
+<p>pwm本质上是信号而pwm的频率是指每秒钟信号从高电平到低电平再回到高电平的次数，<strong>占空比</strong>是高电平持续时间和低电平持续时间之间的比例。pwm就是通过这种原理实现D&#x2F;A转换的</p>
+<p>pwm的频率越高，其对输出的响应就会越快，频率越低输出响应越慢。 pwm的调节作用来源于对“占周期”的宽度控制，“占周期”变宽，输出的能量就会提高，通过电阻和电容变换电路所得到的平均电压也会上升，“占周期”变窄，输出的能量就会降低，通过电阻和电容变换电路所得到的平均电压也会下降。</p>
+<p>占空比是指高电平在一个周期之内所占的时间比率。方波的占空比为50%，占空比为0.5，说明正电平所占时间为0.5个周期。</p>
+<p>而测量PWM频率的工具一般可采用示波器来进行调试</p>
+<p><img src="https://bkimg.cdn.bcebos.com/pic/77094b36acaf2edda89c1d14861001e9380193d9?x-bce-process=image/resize,m_lfit,w_536,limit_1/format,f_jpg" srcset="/kukuBlog.github.io/img/loading.gif" lazyload alt="占空比"></p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/kukuBlog.github.io/categories/%E7%94%B5%E5%AD%90%E5%9F%BA%E7%A1%80/" class="category-chain-item">电子基础</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/kukuBlog.github.io/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>PWM</div>
+      <div>https://kukutx.github.io/kukuBlog.github.io/it/2022/09/27/%E3%80%8APWM%E3%80%8B/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>kukutx</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>27 settembre 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/kukuBlog.github.io/it/2022/09/26/%E3%80%8AElectronic%20circuit%E3%80%8B/" title="Electronic circuit">
+                        <span class="hidden-mobile">Electronic circuit</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', 'Kukutx/commit-utterances');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="js/duration.js"></script> </div> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/kukuBlog.github.io/js/events.js" ></script>
+<script  src="/kukuBlog.github.io/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/kukuBlog.github.io/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.0/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/kukuBlog.github.io/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/kukuBlog.github.io/js/DynamicLine.js"></script>
+<script src="//cdn.jsdelivr.net/gh/EmoryHuang/BlogBeautify@1.1/snowflake.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/kukuBlog.github.io/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+<script src="/kukuBlog.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/kukuBlog.github.io/live2dw/assets/nico.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":0.7},"log":false});</script></body>
+</html>
